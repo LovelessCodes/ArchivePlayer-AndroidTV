@@ -1,0 +1,17 @@
+ArchivePlayer TV
+
+This software is a derivative work based on ArchivePlayer by Jeppe Kjeldal.
+
+Original project:
+https://github.com/JeppeKjeldal/ArchivePlayer
+
+Original work Copyright (c) 2026 Jeppe Kjeldal
+Modifications Copyright (c) 2026 ArchivePlayer contributors
+
+The original ArchivePlayer is an ASP.NET Core application. This repository is a
+native Android TV client built with Kotlin and Jetpack Compose for TV. It talks
+to an ArchivePlayer server through the public HTTP API and does not include the
+server, the web frontend, or the desktop application.
+
+The original author is credited in the application's Settings -> About screen,
+the README, and the LICENSE file.

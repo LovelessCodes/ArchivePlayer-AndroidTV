@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ArchivePlayer TV</string>
+    <string name="app_description">A local-first Archive.org media library for the big screen.</string>
+    <string name="setup_title">Connect to your library</string>
+    <string name="setup_subtitle">Choose an ArchivePlayer server on this network, or enter its address.</string>
+    <string name="setup_searching">Looking for ArchivePlayer servers…</string>
+    <string name="setup_none">No servers found yet.</string>
+    <string name="setup_manual">Enter address manually</string>
+    <string name="setup_connect">Connect</string>
+    <string name="setup_rescan">Scan again</string>
+    <string name="pairing_title">Pair this TV</string>
+    <string name="pairing_subtitle">Scan the code with your phone, or enter the code on the server’s activation page.</string>
+    <string name="pairing_waiting">Waiting for approval…</string>
+    <string name="pairing_expired">This pairing code expired.</string>
+    <string name="pairing_denied">Pairing was declined.</string>
+    <string name="pairing_retry">Try again</string>
+    <string name="home_continue">Continue watching</string>
+    <string name="home_empty">Your library is empty.</string>
+    <string name="home_empty_hint">Add something from the ArchivePlayer web app, then come back.</string>
+    <string name="detail_play">Play</string>
+    <string name="detail_resume">Resume</string>
+    <string name="detail_episodes">Episodes</string>
+    <string name="detail_no_video">No playable video was found for this title.</string>
+    <string name="player_loading">Loading stream…</string>
+    <string name="player_error">This video could not be played.</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_server">Server</string>
+    <string name="settings_account">Account</string>
+    <string name="settings_device">This TV</string>
+    <string name="settings_unpair">Unpair this TV</string>
+    <string name="settings_unpair_hint">Removes the token from this device. Your watch history stays on the server.</string>
+    <string name="settings_remote_url">Remote address</string>
+    <string name="settings_remote_hint">Optional HTTPS address used when the LAN server is unreachable, for example while travelling.</string>
+    <string name="settings_save">Save</string>
+    <string name="settings_test">Test connection</string>
+    <string name="settings_switch">Switch server</string>
+    <string name="error_retry">Retry</string>
+    <string name="error_switch">Choose another server</string>
+    <string name="error_unauthorized">This TV’s pairing is no longer valid. Pair it again.</string>
+    <string name="common_back">Back</string>
+    <string name="common_cancel">Cancel</string>
+</resources>

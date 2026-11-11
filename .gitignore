@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+.kotlin/
+build/
+*/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android Studio
+.idea/
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Local machine configuration
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# Signing material and generated output
+release/
+*.apk
+*.aab
+*.idsig
+
+# OS files
+.DS_Store
+Thumbs.db
