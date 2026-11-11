@@ -1,5 +1,8 @@
 # ArchivePlayer TV
 
+[![Android](https://github.com/LovelessCodes/ArchivePlayer-AndroidTV/actions/workflows/android.yml/badge.svg)](https://github.com/LovelessCodes/ArchivePlayer-AndroidTV/actions/workflows/android.yml)
+[![Release](https://img.shields.io/github/v/release/LovelessCodes/ArchivePlayer-AndroidTV)](https://github.com/LovelessCodes/ArchivePlayer-AndroidTV/releases)
+
 A native Android TV client for [ArchivePlayer](https://github.com/LovelessCodes/ArchivePlayer), the local-first
 Archive.org media library. Built with Kotlin and Jetpack Compose for TV, designed
 for a D-pad first, ten-foot experience.
@@ -185,7 +188,7 @@ boundaries.
 - The browser mock in the server repo is not used here; unit tests use
   MockWebServer and JVM-only code.
 - The UI uses hardcoded English strings in Compose for now. `strings.xml` holds
-  the launcher-facing labels and is ready for localization.
+  app labels and is ready for localization.
 
 ## Attribution
 
