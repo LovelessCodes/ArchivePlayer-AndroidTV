@@ -53,8 +53,32 @@ networks, and some VLANs block mDNS; use **Enter address manually** there.
 
 ## Install
 
-Download the APK from [Releases](https://github.com/LovelessCodes/ArchivePlayer-AndroidTV/releases)
-and sideload it:
+Download the latest APK from
+[Releases](https://github.com/LovelessCodes/ArchivePlayer-AndroidTV/releases).
+These methods work on Android TV, Google TV, and Fire TV. Samsung Tizen and LG
+webOS televisions cannot install Android APKs.
+
+| Method | Needs | Best for |
+|---|---|---|
+| [ADB over the network](#adb-over-the-network) | Computer, network debugging | Development and repeat installs |
+| [Downloader app](#downloader-app-on-the-tv) | TV only | One-off install without a computer |
+| [Phone to TV](#phone-to-tv) | Phone and TV | Avoiding remote-control typing |
+| [USB drive](#usb-drive) | USB drive and a file manager | Offline installs |
+| [Local web server](#local-web-server) | Computer on the same LAN | Testing a local build |
+| [Obtainium](#obtainium) | One-time APK install | Automatic GitHub updates |
+| [Play internal testing](#google-play-internal-testing) | Play Console account | Family and recurring distribution |
+| [Amazon Appstore](#amazon-appstore) | Amazon developer account | Fire TV distribution |
+
+Each release publishes a `SHA256SUMS.txt`. Verify the download on a computer
+before transferring it:
+
+```bash
+sha256sum ArchivePlayerTV-0.1.0.apk
+```
+
+### ADB over the network
+
+This is the fastest method if you already use Android development tools.
 
 ```bash
 adb connect 192.168.1.50:5555
@@ -63,12 +87,129 @@ adb install -r ArchivePlayerTV-0.1.0.apk
 
 Enable **Network debugging** in the TV's developer options first. On a Google TV
 or Android TV device this is usually under **Settings → System → Developer
-options → Network debugging**.
+options → Network debugging**. Some devices call it **USB debugging** and require
+a USB cable for the first connection.
 
-The preview APK is signed with the Android debug key. It is suitable for
-sideloading and development. A stable release key will be used for store or
-long-lived distribution; changing signing keys requires uninstalling the old
-build.
+### Downloader app on the TV
+
+No computer required.
+
+1. Install **Downloader by AFTVnews** from the TV's app store, where available.
+2. Open Downloader and allow it to install unknown apps when prompted.
+3. Enter the direct APK address:
+
+   ```text
+   https://github.com/LovelessCodes/ArchivePlayer-AndroidTV/releases/download/v0.1.0/ArchivePlayerTV-0.1.0.apk
+   ```
+
+   Replace `0.1.0` with the current release version.
+
+4. Download the file, install it, and open **ArchivePlayer TV**.
+
+Typing that address with a remote is tedious. Use the **Google TV** phone app's
+keyboard, a Bluetooth keyboard, or a USB keyboard to paste it.
+
+### Phone to TV
+
+This avoids most typing and works well when the TV has no browser.
+
+1. Install **Send Files to TV** on the phone and the TV from their app stores.
+2. Download the APK on the phone from the release page.
+3. Send the APK to the TV.
+4. If the TV has no file manager, install **X-plore File Manager** or **FX File
+   Explorer** from the TV's app store.
+5. Open the received APK from the file manager and install it.
+
+Allow installs from the file manager when Android asks.
+
+### USB drive
+
+1. Copy `ArchivePlayerTV-0.1.0.apk` to a FAT32 or exFAT USB drive.
+2. Plug the drive into the TV.
+3. Open it with a file manager such as **X-plore** or **FX File Explorer**.
+4. Select the APK and install it.
+
+The TV's built-in media player normally will not install APKs; a file manager is
+required.
+
+### Local web server
+
+If the TV and computer are on the same network:
+
+```bash
+cd ~/Downloads
+python3 -m http.server 8000
+```
+
+Then open this address in Downloader or the TV browser:
+
+```text
+http://<computer-lan-ip>:8000/ArchivePlayerTV-0.1.0.apk
+```
+
+For example, `http://192.168.1.20:8000/ArchivePlayerTV-0.1.0.apk`. Allow the
+connection through the computer firewall if necessary.
+
+This serves files over plain HTTP only on your local network. Do not expose the
+directory to the public internet.
+
+### Obtainium
+
+[Obtainium](https://github.com/ImranR98/Obtainium) installs and updates APKs
+directly from GitHub releases.
+
+1. Install Obtainium on the TV using Downloader, a phone transfer, or USB.
+2. Add this repository URL:
+
+   ```text
+   https://github.com/LovelessCodes/ArchivePlayer-AndroidTV
+   ```
+
+3. Let Obtainium import the releases and install the latest APK.
+
+Its interface is designed for phones, so a mouse or a remote with pointer support
+is helpful. Obtainium can check for new GitHub releases and offer updates without
+repeating the sideload process.
+
+### Google Play internal testing
+
+This is the cleanest option for family, friends, or long-lived distribution.
+
+You need a Google Play Console developer account, a release-signed APK or AAB,
+and the app's store listing and content declarations. The TV banner and Leanback
+entry point are already in this repository. Create an **Internal testing** track,
+add testers by Google account, and install through the Play Store on the TV.
+Internal testers receive updates normally.
+
+The preview APK attached to GitHub is debug-signed and is not suitable for Play
+distribution. Configure a release keystore as described in
+[Release signing](#release-signing).
+
+### Amazon Appstore
+
+For Fire TV, you can submit a release-signed APK to the Amazon Appstore. Amazon
+review is required. For a single device, the Downloader app is much faster.
+
+### Allow installs from unknown sources
+
+Android TV grants this permission per installing app. Open **Settings → Apps →
+Security & restrictions → Unknown sources** and enable the app you are using to
+install the APK — Downloader, the file manager, or the browser. On some devices
+the path is **Settings → Device Preferences → Security & restrictions**. On Fire
+TV, use **Settings → My Fire TV → Developer Options → Install unknown apps**.
+
+### Signing and updates
+
+The current GitHub release APK is signed with the Android debug key because no
+production keystore is configured. It installs, but a future build signed with a
+different key cannot update it in place. Uninstall the old app first:
+
+```bash
+adb uninstall codes.loveless.archiveplayer.tv
+```
+
+Or use **Settings → Apps → ArchivePlayer TV → Uninstall**. The same rule applies
+if a locally built APK uses a different debug key.
 
 ## First run
 
